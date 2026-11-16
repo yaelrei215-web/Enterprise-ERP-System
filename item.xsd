@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServerYaelReichenberg.DTO" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServerYaelReichenberg.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServerYaelReichenberg/Service1/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="CityDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdCity" type="xs:int" />
+      <xs:element minOccurs="0" name="NameCity" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CityDTO" nillable="true" type="tns:CityDTO" />
+  <xs:complexType name="ArrayOfCityDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CityDTO" nillable="true" type="tns:CityDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCityDTO" nillable="true" type="tns:ArrayOfCityDTO" />
+  <xs:complexType name="UserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCity" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumOfHouse" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PassWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tz" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserImag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="tns:CityDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+  <xs:complexType name="ArrayOfUserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDTO" nillable="true" type="tns:ArrayOfUserDTO" />
+  <xs:complexType name="ArrayOfCategoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryDTO" nillable="true" type="tns:CategoryDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoryDTO" nillable="true" type="tns:ArrayOfCategoryDTO" />
+  <xs:complexType name="CategoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdCategory" type="xs:int" />
+      <xs:element minOccurs="0" name="NameCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryDTO" nillable="true" type="tns:CategoryDTO" />
+  <xs:complexType name="ArrayOfMealDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MealDTO" nillable="true" type="tns:MealDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMealDTO" nillable="true" type="tns:ArrayOfMealDTO" />
+  <xs:complexType name="MealDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:CategoryDTO" />
+      <xs:element minOccurs="0" name="CountMeal" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="Described" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCategory" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdMeal" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameMeal" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MealDTO" nillable="true" type="tns:MealDTO" />
+  <xs:complexType name="ArrayOfOrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDTO" nillable="true" type="tns:OrderDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderDTO" nillable="true" type="tns:ArrayOfOrderDTO" />
+  <xs:complexType name="OrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cvv" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ExperationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrderHall" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NumCard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumOfMeal" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderHall" nillable="true" type="tns:OrderHallDTO" />
+      <xs:element minOccurs="0" name="SumPrice" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="TimeOrder" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderDTO" nillable="true" type="tns:OrderDTO" />
+  <xs:complexType name="OrderHallDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Complate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cvv" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EventDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExperationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hall" nillable="true" type="tns:HallDTO" />
+      <xs:element minOccurs="0" name="IdHall" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrderHall" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NumCard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="USER" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderHallDTO" nillable="true" type="tns:OrderHallDTO" />
+  <xs:complexType name="HallDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HouseNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCity" type="xs:int" />
+      <xs:element minOccurs="0" name="IdHall" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="tns:CityDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HallDTO" nillable="true" type="tns:HallDTO" />
+  <xs:complexType name="ArrayOfDataOrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataOrderDTO" nillable="true" type="tns:DataOrderDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataOrderDTO" nillable="true" type="tns:ArrayOfDataOrderDTO" />
+  <xs:complexType name="DataOrderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdMeal" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Meal" nillable="true" type="tns:MealDTO" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:OrderDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataOrderDTO" nillable="true" type="tns:DataOrderDTO" />
+  <xs:complexType name="ArrayOfHallDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HallDTO" nillable="true" type="tns:HallDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHallDTO" nillable="true" type="tns:ArrayOfHallDTO" />
+  <xs:complexType name="ArrayOfOrderHallDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderHallDTO" nillable="true" type="tns:OrderHallDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderHallDTO" nillable="true" type="tns:ArrayOfOrderHallDTO" />
+</xs:schema>

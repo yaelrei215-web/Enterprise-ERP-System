@@ -1,0 +1,95 @@
+﻿<Page x:Class="GUIYael.PageCategory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.expression.blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="בחירת קטגוריה"
+      Background="#FBFBFC" 
+      FlowDirection="RightToLeft">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#F8F9FA" Offset="0"/>
+                <GradientStop Color="#FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+
+            <TextBlock Text="בחירת קטגוריה לתפריט" 
+                       FontSize="38" FontWeight="Light" Foreground="#2D3436"  Margin="0,0,0,10" 
+                       HorizontalAlignment="Center"/>
+
+            <Rectangle Height="1" Width="80" Fill="#D1D8E0" Margin="0,0,0,40"/>
+
+            <Border Background="White" 
+                    CornerRadius="25"   Padding="45,50" BorderThickness="0">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="35" ShadowDepth="2" Color="#E2E2E2" Opacity="0.6"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <TextBlock Text="מה תרצו להזמין לאירוע שלכם ?" 
+                               FontSize="16" 
+                               Foreground="#A4B0BE" 
+                               Margin="0,0,0,15" 
+                               HorizontalAlignment="Center"/>
+
+                    <ComboBox Name="cmbCategory"    DisplayMemberPath="NameCategory" 
+                              SelectedItem="{Binding this}" Height="50"  FontSize="18" 
+                              VerticalContentAlignment="Center"        Margin="0,0,0,30" 
+                              Padding="10,5"   BorderBrush="#F1F2F6"  Background="#FBFBFC"/>
+
+                    <Button Content="צפייה במנות התפריט"  Click="Button_Click_1" Height="55"   FontSize="18" 
+                            FontWeight="SemiBold" Foreground="White"     Background="#2D3436" Cursor="Hand" 
+                            BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="15"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
+
+
+
+<!--<-->
+<!--Page x:Class="GUIYael.PageCategory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+      Background="#F5F7FA"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="בחירת קטגוריה"
+      FlowDirection="RightToLeft">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+
+            <TextBlock Text="ניהול קטגוריות"  FontSize="28"  FontWeight="Bold"  Foreground="SlateBlue" Margin="00010"  HorizontalAlignment="Center"/>
+
+            <TextBlock Text="בחר קטגוריה מהרשימה להמשך:"  FontSize="14" Foreground="#7F8C8D"   Margin="0,0,0,20"   HorizontalAlignment="Center"/>
+
+            <ComboBox Name="cmbCategory"  DisplayMemberPath="NameCategory"  SelectedItem="{Binding this}"  Height="40"  FontSize="16"  VerticalContentAlignment="Center" Margin="0,0,0,15"   />
+
+            <Button Content="אישור ומעבר" Click="Button_Click_1" Height="45" FontSize="16" FontWeight="SemiBold" Background="SteelBlue"  Foreground="White" />
+
+
+
+        </StackPanel>
+    </Grid>
+</Page>-->
+    
+    
+    

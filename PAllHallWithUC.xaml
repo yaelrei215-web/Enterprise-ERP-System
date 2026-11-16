@@ -1,0 +1,58 @@
+﻿<Page x:Class="GUIYael.PAllHallWithUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="PAllHallWithUC" 
+      Background="#F8FAFC">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30,20">
+
+            <TextBlock Text="רשימת האולמות" 
+                       FontSize="26" 
+                       FontWeight="Bold" 
+                       Foreground="#0F172A" 
+                       Margin="0,10,0,25" 
+                       HorizontalAlignment="Center"/>
+
+            <WrapPanel Name="WRPHall" 
+                       HorizontalAlignment="Center" 
+                       ItemWidth="280"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
+
+<!--<Page x:Class="GUIYael.PAllHallWithUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+  
+
+ 
+    
+      Title="PAllHallWithUC" Background="#F4F7F6">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+
+                <TextBlock Text="רשימת האולמות" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="#2D3436" 
+                       Margin="0,0,0,20" 
+                       HorizontalAlignment="Center"/>
+
+                <WrapPanel Name="WRPHall" 
+                       HorizontalAlignment="Center" 
+                       ItemWidth="260" 
+                       ItemHeight="290"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Page>-->

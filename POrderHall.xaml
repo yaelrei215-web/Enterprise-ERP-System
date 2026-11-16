@@ -1,0 +1,249 @@
+﻿<Page x:Class="GUIYael.POrderHall"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="POrderHall"
+      Background="#F8F9FA">
+
+  <!-- סגנון משותף לכל תיבות הטקסט (TextBox) למראה אחיד ומודרני -->
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#434752"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="1.5"/>
+                                <Setter Property="Background" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+   
+        <Border Background="#FFFFFF"
+                CornerRadius="24"
+                Padding="28"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="440"
+                BorderBrush="#EAEAEA"
+                BorderThickness="1">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="25"
+                                  ShadowDepth="4"
+                                  Color="#000000"
+                                  Opacity="0.06"/>
+            </Border.Effect>
+
+            <StackPanel FlowDirection="RightToLeft">
+
+          
+                <TextBlock Text="סיכום ואישור הזמנה" 
+                           FontSize="22" 
+                           FontWeight="Bold" 
+                           Foreground="#1A1A1A" 
+                           Margin="0,0,0,20"
+                           HorizontalAlignment="Center"/>
+
+       
+                <Border Background="#F9FAFB" CornerRadius="14" Padding="16" Margin="0,0,0,20">
+                    <StackPanel>
+                    
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="אולם: " FontWeight="SemiBold" Foreground="#555555" FontSize="14"/>
+                            <TextBlock Name="txtHallName" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="כתובת: " FontWeight="SemiBold" Foreground="#555555" FontSize="14"/>
+                            <TextBlock Name="txtCity" Text=", " Foreground="#1A1A1A" FontSize="14"/>
+                            <TextBlock Name="txtAddress" Foreground="#1A1A1A" FontSize="14"/>
+                        </StackPanel>
+
+                       
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="תאריך: " FontWeight="SemiBold" Foreground="#555555" FontSize="14"/>
+                            <TextBlock Name="txtEventDate" Foreground="#1A1A1A" FontSize="14"/>
+                        </StackPanel>
+
+                      
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="סה&quot;כ לתשלום: " FontWeight="SemiBold" Foreground="#555555" FontSize="14"/>
+                            <TextBlock  Name="txtprice" Foreground="#1A1A1A" FontSize="15" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+             
+                <TextBlock Text="פרטי זיהוי" FontSize="13" FontWeight="SemiBold" Foreground="#757575" Margin="0,0,0,8"/>
+
+                <UniformGrid Columns="2" Margin="0,0,0,16">
+                    <StackPanel Margin="0,0,6,0">
+                        <TextBlock Text="תעודת זהות" FontSize="12" Foreground="#555555" Margin="0,0,0,4"/>
+                        <TextBox Name="tz"/>
+                    </StackPanel>
+                    <StackPanel Margin="6,0,0,0">
+                        <TextBlock Text="סיסמה" FontSize="12" Foreground="#555555" Margin="0,0,0,4"/>
+                        <TextBox Name="password"/>
+                    </StackPanel>
+                </UniformGrid>
+
+            
+                <TextBlock Text="פרטי תשלום" FontSize="13" FontWeight="SemiBold" Foreground="#757575" Margin="0,0,0,8"/>
+
+                <Grid Margin="0,0,0,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="10,10,10,0" HorizontalAlignment="Left">
+                        <TextBlock Text="מספר כרטיס" FontSize="12" Foreground="#555555" Margin="0,0,0,4"/>
+                        <TextBox x:Name="numCard" Width="150"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10,10,10,0" HorizontalAlignment="Left">
+                        <TextBlock Text="תוקף (MM/YY)" FontSize="12" Foreground="#555555" Margin="0,0,0,4"/>
+                        <TextBox  x:Name="expdate" MaxLength="5" Width="80" ToolTip="הזינו בפורמט חודש/שנה (למשל: 12/26)"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="0" Margin="10,80,10,0" HorizontalAlignment="Left">
+                        <TextBlock Text="שלוש ספרות (CVV)" FontSize="12" Foreground="#555555" Margin="0,0,0,4"/>
+                        <TextBox x:Name="cvv" MaxLength="3" Width="60" ToolTip="3 ספרות בגב הכרטיס"/>
+                    </StackPanel>
+                </Grid>
+
+           
+                <Button Content="בצע הזמנה" 
+                        Click="Button_Click"  
+                        Height="44"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        BorderThickness="0">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#2A2D34"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#434752"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#1A1B20"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
+
+
+
+
+
+
+
+
+
+
+<!--<Page x:Class="GUIYael.POrderHall"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="POrderHall"
+      Background="AliceBlue">
+
+    <StackPanel Margin="20" FlowDirection="RightToLeft">
+        <TextBlock Text="פרטי ההזמנה שלך:" FontSize="20" FontWeight="Bold"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="אולם: " FontWeight="Bold"/>
+            <TextBlock Name="txtHallName"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="כתובת: " FontWeight="Bold"/>
+            <TextBlock Name="txtCity" Text=", "/>
+            <TextBlock Name="txtAddress"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="תאריך: " FontWeight="Bold"/>
+            <TextBlock Name="txtEventDate"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="מחיר: " FontWeight="Bold"/>
+            <TextBlock Name="txtprice"/>
+        </StackPanel>
+
+        <Separator Margin="0,10"/>
+
+        <TextBlock Text="תעודת זהות:"/>
+        <TextBox Name="tz"/>
+        <TextBlock Text="סיסמא:"/>
+        <TextBox Name="password"/>
+
+        <StackPanel Margin="0,0,5,0">
+            <TextBlock Text="מספר כרטיס" FontSize="12" Foreground="Gray" Margin="0,0,0,3"/>
+            <TextBox x:Name="numCard" Height="32" FontSize="14" VerticalContentAlignment="Center" Background="#FBFBFC"/>
+        </StackPanel>
+        <StackPanel Margin="5,0,0,0">
+            <TextBlock Text="תוקף כרטיס (MM/YY)" FontSize="12" Foreground="Gray" Margin="0,0,0,3"/>
+        <TextBox Name="txtExpiry" 
+MaxLength="5"  Height="32" 
+FontSize="14"  VerticalContentAlignment="Center"   Background="#FBFBFC"
+ToolTip="הזינו בפורמט MM/YY (למשל: 12/26)"/>
+           </StackPanel>
+                <Button Content="בצע הזמנה" Click="Button_Click"  Margin="0,20"/>
+    </StackPanel>
+</Page>-->

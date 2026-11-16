@@ -1,0 +1,106 @@
+﻿
+
+<!--<UserControl x:Class="GUIYael.UCMeal"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:local="clr-namespace:GUIYael"
+mc:Ignorable="d" Background="LightSlateGray"
+d:DesignHeight="55" d:DesignWidth="86"
+           Margin="10"    >
+
+    <StackPanel Margin="15" Background="#F9F9F9" Width="210" >
+
+        <Image x:Name="MyIMG" Height="250"  Width="210" />
+
+        <StackPanel Margin="12" FlowDirection="RightToLeft">
+
+            <TextBlock Text="{Binding NameMeal}" FontSize="20" FontWeight="Bold" Foreground="#2C3E50"/>
+
+            <TextBlock Text="{Binding Described}" FontSize="13" Foreground="DimGray" TextWrapping="Wrap" Height="40" Margin="0,5"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="מחיר: " FontSize="15" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding CountMeal}" FontSize="18" FontWeight="Bold" Foreground="#27AE60"/>
+                <TextBlock Text=" ש''ח" FontSize="14" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                <TextBlock Text="כמות:" FontSize="15" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="txtAmout" Width="50" Height="28" Text="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <Button x:Name="btnAdd" Content="הוסף לסל" 
+                    Background="#27AE60" Foreground="White" 
+                    FontSize="18" FontWeight="Bold" 
+                    Height="45"
+                    Click="Button_Click"/>
+
+            <TextBlock x:Name="txtBAdded" Text="נוסף!" FontSize="14" Foreground="Red" 
+                       Margin="0,5" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>-->
+
+<UserControl x:Class="GUIYael.UCMeal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Background="Transparent">
+
+    <Border Background="White" CornerRadius="15" Width="230" Margin="10" BorderBrush="#EEEEEE" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="Gray" Opacity="0.2"/>
+        </Border.Effect>
+
+        <StackPanel>
+            <Border CornerRadius="15,15,0,0" ClipToBounds="True">
+                <Image x:Name="MyIMG" Height="180" Width="230" Stretch="UniformToFill"/>
+            </Border>
+
+            <StackPanel Margin="15" FlowDirection="RightToLeft">
+
+                <TextBlock Text="{Binding NameMeal}" FontSize="20" FontWeight="Bold" Foreground="#2D3436" Margin="0,0,0,5"/>
+
+                <TextBlock Text="{Binding Described}" FontSize="13" Foreground="#636E72" 
+                           TextWrapping="Wrap" Height="40" Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="מחיר: " FontSize="14" Foreground="#7F8C8D" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding CountMeal}" FontSize="18" FontWeight="Bold" Foreground="#0984E3"/>
+                    <TextBlock Text=" ₪" FontSize="14" Foreground="#0984E3" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                    <TextBlock x:Name="txtAmout1" Text="כמות:" FontSize="14" Foreground="#7F8C8D" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                    <TextBox x:Name="txtAmout" Width="50" Height="30" Text="1" 
+             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+             BorderBrush="#BDC3C7" Margin="0,0,5,0"/>
+
+                    <Border>
+                        <TextBlock x:Name="txtAmout2" Text="1" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+
+                <Button x:Name="btnAdd" Content="הוסף לסל" 
+                        Background="#2D3436" Foreground="White" 
+                        FontSize="16" FontWeight="SemiBold" 
+                        Height="40" Click="Button_Click" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <TextBlock x:Name="txtBAdded" Text="נוסף!" FontSize="12" Foreground="Green" 
+                           Margin="0,5,0,0" HorizontalAlignment="Center" Visibility="Collapsed"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,85 @@
+﻿<Page x:Class="GUIYael.PUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:GUIYael"
+      Background="#F8F9FA" FlowDirection="RightToLeft" Title="PUser"
+    UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+
+    <Page.Resources>
+        <local:ValidationTZ x:Key="ValidationTZ"/>
+    </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Background="White" CornerRadius="15" Margin="30" Padding="30" Width="550" HorizontalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Color="Gray" Opacity="0.1"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="👤 טופס הרשמה למערכת" FontSize="26" FontWeight="Light" Foreground="#2D3436" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <TextBlock Text="תעודת זהות" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <TextBox Name="tz" Height="40" FontSize="16" VerticalContentAlignment="Center" Background="GhostWhite" BorderThickness="0,0,0,1">
+                    <!--<Binding Path="Tz">-->
+                    <Binding Path="Tz">
+                        <Binding.ValidationRules>
+                            <local:ValidationTZ/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <TextBlock Text="שם פרטי" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding FirstName}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC" Margin="0,0,0,15"/>
+
+                <TextBlock Text="שם משפחה" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding LastName}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC" Margin="0,0,0,15"/>
+
+                <TextBlock Text="תאריך לידה" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <Calendar x:Name="myCalendar" SelectedDate="{Binding Birthday}" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <TextBlock Text="בחר עיר" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <ComboBox Name="cmbCities" DisplayMemberPath="NameCity" SelectedItem="{Binding city}" Height="38" Background="#FBFBFC" Margin="0,0,0,15"/>
+
+                <UniformGrid Columns="2" Margin="0,0,0,15">
+                    <StackPanel Margin="0,0,10,0">
+                        <TextBlock Text="רחוב" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding Street}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC"/>
+                    </StackPanel>
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="מספר בית" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding NumOfHouse}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC"/>
+                    </StackPanel>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,0,0,15">
+                    <StackPanel Margin="0,0,10,0">
+                        <TextBlock Text="סיסמה" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding PassWord}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC"/>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock x:Name="ItemOfMeneger" Text="סוג משתמש" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+
+                            <ComboBox x:Name="ItemOfMeneger1" 
+                             Height="38" 
+                         SelectedValue="{Binding UserType}" 
+                         SelectedValuePath="Tag">
+                                <ComboBoxItem Content="מנהל" Tag="1"/>
+                                <ComboBoxItem Content="משתמש" Tag="2"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                </UniformGrid>
+
+                <TextBlock Text="מספר טלפון" FontSize="13" Foreground="Gray" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding CellPhone}" Height="38" FontSize="15" VerticalContentAlignment="Center" Background="#FBFBFC" Margin="0,0,0,20"/>
+
+                <UniformGrid Columns="2" Margin="0,0,0,25">
+                    <Button Content="📁 צרף תמונה" Click="Button_Click_1" Background="#747D8C" Foreground="White" Height="38" VerticalAlignment="Center" Cursor="Hand" BorderThickness="0"/>
+                    <Image x:Name="MyIMG" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+                </UniformGrid>
+
+                <Button Content="אישור והרשמה" Click="Button_Click" FontSize="18" FontWeight="SemiBold" Background="#2D3436" Foreground="White" Height="48" Cursor="Hand" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>
+    

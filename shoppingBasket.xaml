@@ -1,0 +1,108 @@
+﻿<!--<Page x:Class="GUIYael.shoppingBasket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" Background="Ivory"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="shoppingBasket">
+
+
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <StackPanel HorizontalAlignment="Right" Margin="20" Width="300">
+
+            <TextBlock Text="סל הקניות" FontSize="35" Foreground="Black" HorizontalAlignment="Right" Margin="0,0,0,20"/>
+
+            <StackPanel x:Name="stpMeals" HorizontalAlignment="Right"/>
+
+            <Separator Height="20" Background="Transparent"/>
+            <TextBlock Text=":סך הכל" HorizontalAlignment="Right" FontWeight="Bold"/>
+            <TextBox x:Name="sumPrice" HorizontalAlignment="Right" Width="100" Margin="0,5,0,10" TextAlignment="Right"/>
+
+            <TextBlock Text=":סך המנות" HorizontalAlignment="Right" FontWeight="Bold"/>
+            <TextBox x:Name="sumMeal" HorizontalAlignment="Right" Width="100" Margin="0,5,0,20" TextAlignment="Right"/>
+
+            <Button Content="בצע הזמנה" FontSize="18" Background="Green" Foreground="White" 
+                Padding="10" HorizontalAlignment="Stretch" Click="Button_Click"/>
+
+        </StackPanel>
+    </ScrollViewer>
+
+
+
+</Page>-->
+<!--<Page x:Class="GUIYael.shoppingBasket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F8F9FA" FlowDirection="RightToLeft" Title="shoppingBasket"
+   UseLayoutRounding="True"
+TextOptions.TextFormattingMode="Display" >
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Background="White" CornerRadius="12" Margin="30" Padding="20" Width="320" HorizontalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="Gray" Opacity="0.1"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="🛒 סל הקניות שלך" FontSize="24" FontWeight="SemiBold" Foreground="#2D3436" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+
+                <StackPanel x:Name="stpMeals" Margin="0,0,0,15"/>
+
+                <Separator Background="#EFEFEF" Margin="0,10"/>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="סך הכל לתשלום:" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="sumPrice" Width="90" Height="28" TextAlignment="Center" FontSize="14" Background="#FBFBFC" BorderThickness="1" BorderBrush="#E0E0E0" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5,0,20">
+                    <TextBlock Text="סך כל המנות:" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="sumMeal" Width="90" Height="28" TextAlignment="Center" FontSize="14" Background="#FBFBFC" BorderThickness="1" BorderBrush="#E0E0E0" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                </UniformGrid>
+
+                <Button Content="בצע הזמנה מהירה" Click="Button_Click" FontSize="16" FontWeight="SemiBold" Background="#2ECC71" Foreground="White" Height="42" Cursor="Hand" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>-->
+
+<Page x:Class="GUIYael.shoppingBasket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F8F9FA" FlowDirection="RightToLeft" Title="shoppingBasket"
+      UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Background="White" CornerRadius="12" Margin="30" Padding="20" Width="320" HorizontalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="Gray" Opacity="0.1"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="🛒 סל הקניות שלך" FontSize="24" FontWeight="SemiBold" Foreground="#2D3436" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+
+                <StackPanel x:Name="stpMeals" Margin="0,0,0,15"/>
+
+                <Separator Background="#EFEFEF" Margin="0,10"/>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="סך הכל לתשלום:" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="sumPrice" Width="90" Height="28" TextAlignment="Center" FontSize="14" 
+                             Background="#F1F3F5" BorderThickness="0" VerticalContentAlignment="Center" 
+                             HorizontalAlignment="Left" IsReadOnly="True" IsTabStop="False"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5,0,20">
+                    <TextBlock Text="סך כל המנות:" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="sumMeal" Width="90" Height="28" TextAlignment="Center" FontSize="14" 
+                             Background="#F1F3F5" BorderThickness="0" VerticalContentAlignment="Center" 
+                             HorizontalAlignment="Left" IsReadOnly="True" IsTabStop="False"/>
+                </UniformGrid>
+
+                <Button Content="בצע הזמנה מהירה" Click="Button_Click" FontSize="16" FontWeight="SemiBold" Background="#2ECC71" Foreground="White" Height="42" Cursor="Hand" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>

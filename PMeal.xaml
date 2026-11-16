@@ -1,0 +1,206 @@
+﻿<!--<Page x:Class="GUIYael.PMeal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+     Background="AliceBlue"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PMeal">
+    <ScrollViewer >
+        <StackPanel Width="550" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Background="White" 
+                Margin="0,40">
+
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="25" ShadowDepth="2" Opacity="0.1" Color="Gray"/>
+            </StackPanel.Effect>
+
+            <TextBlock Text="הוספת מנה חדשה לתפריט" 
+                   FontSize="28" 
+                   FontWeight="Light" 
+                   Foreground="SteelBlue" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,40,0,30"/>
+
+            <StackPanel FlowDirection="RightToLeft">
+
+                <StackPanel Margin="50,0,50,20">
+                    <TextBlock Text="שם המנה" FontSize="14" Foreground="SlateGray" Margin="5,0,0,5"/>
+                    <TextBox Text="{Binding NameMeal}" 
+                         Height="40" FontSize="16" 
+                         VerticalContentAlignment="Center" 
+                         Background="GhostWhite" 
+                         BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
+                </StackPanel>
+
+                <StackPanel Margin="50,0,50,20">
+                    <TextBlock Text="תיאור המנה" FontSize="14" Foreground="SlateGray" Margin="5,0,0,5"/>
+                    <TextBox Text="{Binding Described}" 
+                         Height="80" FontSize="16" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True"
+                         Background="GhostWhite" 
+                         BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="50,0,50,20">
+                    <StackPanel Width="200">
+                        <TextBlock Text="מחיר (ש''ח)" FontSize="14" Foreground="SlateGray" Margin="5,0,0,5"/>
+                        <TextBox Text="{Binding CountMeal}" 
+                             Height="40" FontSize="16" 
+                             VerticalContentAlignment="Center" 
+                             Background="GhostWhite" 
+                             BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
+                    </StackPanel>
+
+                    <StackPanel Width="220" Margin="30,0,0,0">
+                        <TextBlock Text="קטגוריה" FontSize="14" Foreground="SlateGray" Margin="5,0,0,5"/>
+                        <ComboBox Name="cmbCategory" 
+                              DisplayMemberPath="NameCategory" 
+                              SelectedItem="{Binding Category}" 
+                              Height="40" 
+                              VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="50,10,50,30">
+                    <TextBlock Text="תמונת המנה" FontSize="14" Foreground="SlateGray" Margin="5,0,0,10"/>
+                    <Button Content="בחר תמונה מהמחשב" 
+                        Click="Button_Click_1" 
+                        Background="LightSteelBlue" 
+                        Height="35" Width="180" 
+                        HorizontalAlignment="Right"/>
+
+                    <Image x:Name="MyIMG" 
+                       Width="150" Height="150" 
+                       Margin="0,15,0,0" 
+                       Stretch="UniformToFill" 
+                       HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Content="שמירת מנה במערכת" 
+    Click="Button_Click"
+                    FontSize="20" 
+                    FontWeight="Bold" 
+                    Background="RoyalBlue" 
+                    Foreground="White" 
+                    Height="55" 
+                    Margin="50,0,50,50" />
+
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+
+
+
+</Page>-->
+<Page x:Class="GUIYael.PMeal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d"
+      Background="#F5F6F8"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="PMeal">
+
+    <ScrollViewer>
+        <Grid>
+
+            <Border Width="650" Margin="0,40" Padding="35" Background="White" CornerRadius="18" HorizontalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="0.25" Color="#CFCFCF"/>
+                </Border.Effect>
+
+                <StackPanel>
+
+                    <TextBlock Text="🍽️" FontSize="42" HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="הוספת מנה חדשה לתפריט"
+                               FontSize="30"
+                               FontWeight="Light"
+                               Foreground="#2D3436"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,0"/>
+
+                    <Border Width="80" Height="4" Background="#F2994A" CornerRadius="3" HorizontalAlignment="Center" Margin="0,12,0,25"/>
+
+                    <TextBlock Text="השלימי את פרטי המנה החדשה"
+                               FontSize="15"
+                               Foreground="#8A97A0"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,30"/>
+
+                    <StackPanel FlowDirection="RightToLeft">
+
+                        <TextBlock Text="שם המנה" FontSize="14" FontWeight="SemiBold" Foreground="#636E72" Margin="0,0,0,8"/>
+
+                        <Border Background="#FAFAFA" BorderBrush="#E2E5E8" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20">
+                            <TextBox Text="{Binding NameMeal}" Height="45" BorderThickness="0" Background="Transparent" FontSize="16" Padding="12,0" VerticalContentAlignment="Center"/>
+                        </Border>
+
+                        <TextBlock Text="תיאור המנה" FontSize="14" FontWeight="SemiBold" Foreground="#636E72" Margin="0,0,0,8"/>
+
+                        <Border Background="#FAFAFA" BorderBrush="#E2E5E8" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20">
+                            <TextBox Text="{Binding Described}" Height="90" BorderThickness="0" Background="Transparent" FontSize="16" Padding="12" TextWrapping="Wrap" AcceptsReturn="True"/>
+                        </Border>
+
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="מחיר (₪)" FontSize="14" FontWeight="SemiBold" Foreground="#636E72" Margin="0,0,0,8"/>
+                                <Border Background="#FAFAFA" BorderBrush="#E2E5E8" BorderThickness="1" CornerRadius="10">
+                                    <TextBox Text="{Binding CountMeal}" Height="45" BorderThickness="0" Background="Transparent" FontSize="16" Padding="12,0" VerticalContentAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="קטגוריה" FontSize="14" FontWeight="SemiBold" Foreground="#636E72" Margin="0,0,0,8"/>
+                                <ComboBox Name="cmbCategory" DisplayMemberPath="NameCategory" SelectedItem="{Binding Category}" Height="45"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="תמונת המנה" FontSize="14" FontWeight="SemiBold" Foreground="#636E72" Margin="0,0,0,10"/>
+
+                        <Button Content="בחר תמונה "
+                                Click="Button_Click_1"
+                                Width="200"
+                                Height="42"
+                                Background="#F2994A"
+                                Foreground="White"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"/>
+
+                        <Border Width="170" Height="170" CornerRadius="12" BorderBrush="#E2E5E8" BorderThickness="1" Margin="0,20,0,25" HorizontalAlignment="Center">
+                            <Image x:Name="MyIMG" Stretch="UniformToFill"/>
+                        </Border>
+
+                        <Button Content="שמירת מנה במערכת"
+                                Click="Button_Click"
+                                Height="55"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Background="#2F363D"
+                                Foreground="White"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+
+</Page>

@@ -1,0 +1,76 @@
+﻿<!--<Page x:Class="GUIYael.PAllUserWithUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUIYael"
+      mc:Ignorable="d" 
+     Background="AliceBlue"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PAllUserWithUC">
+
+    <StackPanel Background="White" FlowDirection="RightToLeft">
+        <TextBlock Text="רשימת כל המשתמשים" FontSize="26" FontWeight="Bold" Foreground="SlateBlue" Margin="10" HorizontalAlignment="Center"/>
+      
+            <WrapPanel Name="WRPUsers" HorizontalAlignment="Right"  Margin="5"/>
+
+    </StackPanel>
+</Page>-->
+
+
+
+
+
+
+
+
+
+
+<Page x:Class="GUIYael.PAllUserWithUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Background="#F8F9FA" 
+      FlowDirection="RightToLeft"
+      Title="PAllUserWithUC">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30">
+
+            <TextBlock Text="📋 ניהול משתמשים" 
+                       FontSize="28" 
+                       FontWeight="Light" 
+                       Foreground="#2D3436" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,30"/>
+
+            <WrapPanel Name="WRPUsers" 
+                       HorizontalAlignment="Center" 
+                       ItemWidth="250" 
+                       ItemHeight="280" 
+                       Margin="0"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="GUIYael.UCHall"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GUIYael"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="#F8F9FA"
+             Width="260"
+             Margin="12">
+
+    <Border Background="#FFFFFF"
+            CornerRadius="20"
+            Padding="18"
+            BorderBrush="#EAEAEA"
+            BorderThickness="1">
+
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="24"
+                              ShadowDepth="4"
+                              Color="#000000"
+                              Opacity="0.06"/>
+        </Border.Effect>
+
+        <StackPanel FlowDirection="RightToLeft">
+
+            <Border Width="224"
+                    Height="140"
+                    CornerRadius="14"
+                    HorizontalAlignment="Center"
+                    Margin="0,2,0,16"
+                    Background="#F0F0F0">
+
+                <Border.Clip>
+                    <RectangleGeometry Rect="0,0,224,140" RadiusX="14" RadiusY="14"/>
+                </Border.Clip>
+
+                <Image Name="HallImg"
+                       Width="224"
+                       Height="140"
+                       Stretch="UniformToFill"/>
+            </Border>
+
+            <TextBlock Text="{Binding Name}"
+                       FontSize="19"
+                       FontWeight="Bold"
+                       Foreground="#1A1A1A"
+                       TextAlignment="Center"
+                       Margin="0,0,0,6"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,14">
+
+                <TextBlock Text="{Binding city.NameCity}"
+                           Foreground="#757575"
+                           FontSize="13"
+                           FontWeight="Medium"/>
+
+                <TextBlock Text=", "
+                           Foreground="#757575"/>
+
+                <TextBlock Text="{Binding Street}"
+                           Foreground="#757575"
+                           FontSize="13"/>
+
+                <TextBlock Text=" "
+                           Foreground="#757575"/>
+
+                <TextBlock Text="{Binding HouseNumber}"
+                           Foreground="#757575"
+                           FontSize="13"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,18">
+                <TextBlock Text="מחיר: "
+                           FontWeight="Normal"
+                           Foreground="#555555"
+                           FontSize="14"/>
+                <TextBlock Text="{Binding Price, StringFormat=\{0:N0\} ₪}"
+                           Foreground="#1A1A1A"
+                           FontWeight="SemiBold"
+                           FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,18">
+                <TextBlock Text="טלפון: "
+                           FontWeight="Normal"
+                           Foreground="#555555"
+                           FontSize="14"/>
+                <TextBlock Text="{Binding CellPhone}"
+                           Foreground="#1A1A1A"
+                           FontWeight="SemiBold"
+                           FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,18">
+                <TextBlock Text="כמות קיבולת: "
+                          FontWeight="Normal"
+                          Foreground="#555555"
+                          FontSize="14"/>
+                <TextBlock Text="{Binding Amount}"
+                          Foreground="#1A1A1A"
+                          FontWeight="SemiBold"
+                          FontSize="16"/>
+            </StackPanel>
+
+            <Button Content="לבדיקת זמינות"
+                    Click="Button_Click"
+                    Height="42"
+                    FontSize="13"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"
+                    BorderThickness="0">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#2A2D34"/>
+                        <Setter Property="Foreground" Value="#FFFFFF"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#434752"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#1A1B20"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+
+        </StackPanel>
+
+    </Border>
+</UserControl>
+<!--<UserControl x:Class="GUIYael.UCHall"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUIYael"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="AliceBlue"
+ 
+            
+             Width="240" Margin="10">
+
+        <Border Background="White" CornerRadius="15" Padding="15" BorderBrush="#E0E0E0" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+            </Border.Effect>
+
+            <StackPanel FlowDirection="RightToLeft">
+
+                <Image Name="HallImg" Height="80" Width="80" Margin="0,0,0,10" Stretch="UniformToFill">
+                    <Image.Clip>
+                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                    </Image.Clip>
+                </Image>
+
+                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Foreground="#2D3436" Margin="0,0,0,5"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="{Binding city.NameCity}" Foreground="#636E72" FontSize="13"/>
+                    <TextBlock Text=", " Foreground="#636E72"/>
+                    <TextBlock Text="{Binding Street}" Foreground="#636E72" FontSize="13"/>
+                    <TextBlock Text=" "/>
+                    <TextBlock Text="{Binding HouseNumber}" Foreground="#636E72" FontSize="13"/>
+                <TextBlock Text="מחיר:" Foreground="#636E72" FontSize="13"/>
+                <TextBlock Text="{Binding Price }" Foreground="#636E72" FontSize="13"/>
+                    
+            </StackPanel>
+
+            <Button Content="לבדיקת זמינות"  Click="Button_Click"/>
+
+        </StackPanel>
+        </Border>
+    </UserControl>-->

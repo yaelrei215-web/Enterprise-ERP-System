@@ -1,0 +1,200 @@
+﻿<Page x:Class="GUIYael.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Title="MainWindow" 
+      FlowDirection="RightToLeft">
+
+    <Page.Resources>
+        <Style TargetType="MenuItem" x:Key="MainMenuStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI, Segoe UI Hebrew, Tahoma"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="Padding" Value="18,14"/>
+            <Setter Property="Margin" Value="2,0"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="DashboardCardStyle">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15" Color="#000000" Opacity="0.05" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Storyboard x:Key="FadeInStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.6"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource FadeInStoryboard}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Grid Background="#F9F9FB" FlowDirection="LeftToRight">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" BorderBrush="#EAF0F6" BorderThickness="0,0,0,1" Padding="5,2">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Color="#000000" Opacity="0.03" ShadowDepth="1"/>
+            </Border.Effect>
+
+            <Menu Background="Transparent" HorizontalAlignment="Right" FlowDirection="RightToLeft" VerticalAlignment="Center">
+
+                <MenuItem Header="👤 משתמשים" Style="{StaticResource MainMenuStyle}">
+                    <MenuItem Header="חדש" Click="MenuItem_Click_2" FontSize="14" Padding="10,6"/>
+                    <MenuItem Name="MIUpdate" Header="עדכן" Click="MenuItem_Click_5" FontSize="14" Padding="10,6"/>
+                </MenuItem>
+
+                <MenuItem Header="🍽️ תפריט קייטרינג" Style="{StaticResource MainMenuStyle}" Click="MenuItem_Click_7"/>
+
+                <MenuItem Header="🛒 סל הקניות" Style="{StaticResource MainMenuStyle}" Click="MenuItem_Click_8"/>
+
+                <MenuItem Name="ItemOfMeneger" Header="⚙️ ניהול מערכת" Style="{StaticResource MainMenuStyle}" Foreground="#9A7B56">
+                    <MenuItem Header=" ✍️ חדש" FontSize="14" Padding="10,6">
+                        <MenuItem Header="הוספת עיר" Click="MenuItem_Click_1"/>
+                        <MenuItem Header="הוספת מנה" Click="MenuItem_Click_9"/>
+                        <MenuItem Header="הוספת קטגוריה" Click="MenuItem_Click_6"/>
+                        <MenuItem Header="הוספת אולם" Click="MenuItem_Click_12"/>
+                    </MenuItem>
+                    <MenuItem Header="📋 הצג רשימות" FontSize="14" Padding="10,6">
+                        <MenuItem Header="רשימת הלקוחות" Click="MenuItem_Click_4"/>
+                        <MenuItem Header="רשימת הערים" Click="MenuItem_Click"/>
+                        <MenuItem Header="רשימת ההזמנות" Click="MenuItem_Click_10"/>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="🏰 להזמנת אולם לאירוע שלכם" Click="MenuItem_Click_11"
+                          Foreground="#2C3E50" FontWeight="Bold"/>
+
+                <MenuItem Name="MIInOut" Click="MIInOut_Click" Foreground="#D32F2F" FontSize="16" FontWeight="Bold" Padding="18,14"/>
+                <MenuItem Name="myOrder" Header="⚙️ ההזמנות שלי" Style="{StaticResource MainMenuStyle}" Foreground="#9A7B56" Click="myOrder_Click" />
+
+
+            </Menu>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="25">
+            <Border CornerRadius="12" Background="#F4F6F9" ClipToBounds="True">
+                <Frame x:Name="myFrame" NavigationUIVisibility="Hidden"/>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#1A1A1A">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="© כל הזכויות שמורות | קייטרינג ואולמות אירועים יוקרתיים" 
+                           FontSize="12" 
+                           Foreground="#A0A0A0" 
+                           FontFamily="Segoe UI, Segoe UI Hebrew"
+                           FontWeight="Normal" 
+                          />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
+
+
+<!--<Page x:Class="GUIYael.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Title="MainWindow" 
+      FlowDirection="RightToLeft">
+
+    <Page.Resources>
+        <Style TargetType="MenuItem" x:Key="MainMenuStyle">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="22,12"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="DashboardCardStyle">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Height" Value="140"/>
+        </Style>
+
+        <Storyboard x:Key="FadeInStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.8"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource FadeInStoryboard}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Grid Background="#F0F2F5" FlowDirection="LeftToRight">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1" Padding="5">
+            <Menu Background="Transparent" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                <MenuItem Header="👤 משתמשים" Style="{StaticResource MainMenuStyle}">
+                    <MenuItem Header="חדש" Click="MenuItem_Click_2" FontSize="16"/>
+                    <MenuItem Name="MIUpdate" Header="עדכן" Click="MenuItem_Click_5" FontSize="16"/>
+                </MenuItem>
+                <MenuItem Header="🍽️ תפריט" Style="{StaticResource MainMenuStyle}" Click="MenuItem_Click_7"/>
+                <MenuItem Header="🛒 סל הקניות" Style="{StaticResource MainMenuStyle}" Click="MenuItem_Click_8"/>
+                <MenuItem Name="ItemOfMeneger" Header="⚙️ ניהול מערכת" Style="{StaticResource MainMenuStyle}" Foreground="#C62828">
+                    <MenuItem Header="חדש" FontSize="16">
+                        <MenuItem Header=" הוספת עיר" Click="MenuItem_Click_1"/>
+                        <MenuItem Header=" הוספת מנה" Click="MenuItem_Click_9"/>
+                        <MenuItem Header=" הוספת קטגוריה" Click="MenuItem_Click_6"/>
+                        <MenuItem Header=" הוספת אולם" Click="MenuItem_Click_12"/>
+                    </MenuItem>
+                    <MenuItem Header="הצג" FontSize="16">
+                        <MenuItem Header="📋 רשימת הלקוחות" Click="MenuItem_Click_4"/>
+                        <MenuItem Header="📋 רשימת הערים" Click="MenuItem_Click"/>
+                        <MenuItem Header="📋 רשימת ההזמנות" Click="MenuItem_Click_10"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Name="MIInOut" Click="MIInOut_Click" Foreground="Red" FontSize="22" FontWeight="Bold" Padding="22,12"/>
+                <MenuItem Header="להזמנת אולם לאירוע שלכם" Click="MenuItem_Click_11"/>
+            </Menu>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="20">
+
+            
+            <Frame x:Name="myFrame" NavigationUIVisibility="Hidden" Background="#F0F2F5"/>
+
+        </Grid>
+
+        <Border Grid.Row="2" Background="#333333">
+            <TextBlock Text="© כל הזכויות שמורות | אירועים" VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" FontSize="13" Foreground="White" FontWeight="Light"/>
+        </Border>
+    </Grid>
+</Page>-->
+
