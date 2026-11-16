@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbYaelReichenbergModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cities">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataOrder">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdMeal" />
+          </Key>
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdMeal" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Halls">
+          <Key>
+            <PropertyRef Name="IdHall" />
+          </Key>
+          <Property Name="IdHall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellPhone" Type="nchar" MaxLength="10" />
+          <Property Name="HouseNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="IdMeal" />
+          </Key>
+          <Property Name="IdMeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameMeal" Type="nvarchar" MaxLength="50" />
+          <Property Name="Described" Type="nvarchar(max)" />
+          <Property Name="CountMeal" Type="real" />
+          <Property Name="IdCategory" Type="int" />
+          <Property Name="Image" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeOrder" Type="time" Precision="7" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="NumOfMeal" Type="int" />
+          <Property Name="SumPrice" Type="real" />
+          <Property Name="IdOrderHall" Type="int" />
+          <Property Name="NumCard" Type="nvarchar" MaxLength="16" />
+          <Property Name="ExperationDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cvv" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderHall">
+          <Key>
+            <PropertyRef Name="IdOrderHall" />
+          </Key>
+          <Property Name="IdOrderHall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="Complate" Type="int" />
+          <Property Name="IdHall" Type="int" Nullable="false" />
+          <Property Name="EventDate" Type="date" />
+          <Property Name="NumCard" Type="nvarchar" MaxLength="16" />
+          <Property Name="Cvv" Type="int" />
+          <Property Name="ExperationDate" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tz" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="NumOfHouse" Type="int" />
+          <Property Name="CellPhone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserImag" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_DataOrder_ToTable">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="DataOrder" Type="Self.DataOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="IdMeal" />
+            </Principal>
+            <Dependent Role="DataOrder">
+              <PropertyRef Name="IdMeal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataOrder_ToTable_1">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="DataOrder" Type="Self.DataOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="DataOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Halls_ToTable">
+          <End Role="cities" Type="Self.cities" Multiplicity="1" />
+          <End Role="Halls" Type="Self.Halls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Halls">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_ToTable">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToTable">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToTable_1">
+          <End Role="OrderHall" Type="Self.OrderHall" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderHall">
+              <PropertyRef Name="IdOrderHall" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdOrderHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderHall_ToTable">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="OrderHall" Type="Self.OrderHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderHall">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderHall_ToTable_1">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="OrderHall" Type="Self.OrderHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="IdHall" />
+            </Principal>
+            <Dependent Role="OrderHall">
+              <PropertyRef Name="IdHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_ToTable">
+          <End Role="cities" Type="Self.cities" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbYaelReichenbergModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataOrder" EntityType="Self.DataOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Halls" EntityType="Self.Halls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meal" EntityType="Self.Meal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderHall" EntityType="Self.OrderHall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DataOrder_ToTable" Association="Self.FK_DataOrder_ToTable">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="DataOrder" EntitySet="DataOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataOrder_ToTable_1" Association="Self.FK_DataOrder_ToTable_1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DataOrder" EntitySet="DataOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Halls_ToTable" Association="Self.FK_Halls_ToTable">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="Halls" EntitySet="Halls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_ToTable" Association="Self.FK_Meal_ToTable">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToTable" Association="Self.FK_Order_ToTable">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToTable_1" Association="Self.FK_Order_ToTable_1">
+            <End Role="OrderHall" EntitySet="OrderHall" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderHall_ToTable" Association="Self.FK_OrderHall_ToTable">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="OrderHall" EntitySet="OrderHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderHall_ToTable_1" Association="Self.FK_OrderHall_ToTable_1">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="OrderHall" EntitySet="OrderHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_ToTable" Association="Self.FK_USERS_ToTable">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbYaelReichenbergModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbYaelReichenbergEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="DbYaelReichenbergModel.Category" />
+          <EntitySet Name="cities" EntityType="DbYaelReichenbergModel.city" />
+          <EntitySet Name="DataOrders" EntityType="DbYaelReichenbergModel.DataOrder" />
+          <EntitySet Name="Halls" EntityType="DbYaelReichenbergModel.Hall" />
+          <EntitySet Name="Meals" EntityType="DbYaelReichenbergModel.Meal" />
+          <EntitySet Name="Orders" EntityType="DbYaelReichenbergModel.Order" />
+          <EntitySet Name="OrderHalls" EntityType="DbYaelReichenbergModel.OrderHall" />
+          <EntitySet Name="USERS" EntityType="DbYaelReichenbergModel.USER" />
+          <AssociationSet Name="FK_Meal_ToTable" Association="DbYaelReichenbergModel.FK_Meal_ToTable">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Halls_ToTable" Association="DbYaelReichenbergModel.FK_Halls_ToTable">
+            <End Role="city" EntitySet="cities" />
+            <End Role="Hall" EntitySet="Halls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_ToTable" Association="DbYaelReichenbergModel.FK_USERS_ToTable">
+            <End Role="city" EntitySet="cities" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataOrder_ToTable" Association="DbYaelReichenbergModel.FK_DataOrder_ToTable">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="DataOrder" EntitySet="DataOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataOrder_ToTable_1" Association="DbYaelReichenbergModel.FK_DataOrder_ToTable_1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="DataOrder" EntitySet="DataOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderHall_ToTable_1" Association="DbYaelReichenbergModel.FK_OrderHall_ToTable_1">
+            <End Role="Hall" EntitySet="Halls" />
+            <End Role="OrderHall" EntitySet="OrderHalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToTable" Association="DbYaelReichenbergModel.FK_Order_ToTable">
+            <End Role="USER" EntitySet="USERS" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToTable_1" Association="DbYaelReichenbergModel.FK_Order_ToTable_1">
+            <End Role="OrderHall" EntitySet="OrderHalls" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderHall_ToTable" Association="DbYaelReichenbergModel.FK_OrderHall_ToTable">
+            <End Role="USER" EntitySet="USERS" />
+            <End Role="OrderHall" EntitySet="OrderHalls" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Meals" Relationship="DbYaelReichenbergModel.FK_Meal_ToTable" FromRole="Category" ToRole="Meal" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Halls" Relationship="DbYaelReichenbergModel.FK_Halls_ToTable" FromRole="city" ToRole="Hall" />
+          <NavigationProperty Name="USERS" Relationship="DbYaelReichenbergModel.FK_USERS_ToTable" FromRole="city" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="DataOrder">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdMeal" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdMeal" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Meal" Relationship="DbYaelReichenbergModel.FK_DataOrder_ToTable" FromRole="DataOrder" ToRole="Meal" />
+          <NavigationProperty Name="Order" Relationship="DbYaelReichenbergModel.FK_DataOrder_ToTable_1" FromRole="DataOrder" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Hall">
+          <Key>
+            <PropertyRef Name="IdHall" />
+          </Key>
+          <Property Name="IdHall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="HouseNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="city" Relationship="DbYaelReichenbergModel.FK_Halls_ToTable" FromRole="Hall" ToRole="city" />
+          <NavigationProperty Name="OrderHalls" Relationship="DbYaelReichenbergModel.FK_OrderHall_ToTable_1" FromRole="Hall" ToRole="OrderHall" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="IdMeal" />
+          </Key>
+          <Property Name="IdMeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameMeal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Described" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountMeal" Type="Single" />
+          <Property Name="IdCategory" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="DbYaelReichenbergModel.FK_Meal_ToTable" FromRole="Meal" ToRole="Category" />
+          <NavigationProperty Name="DataOrders" Relationship="DbYaelReichenbergModel.FK_DataOrder_ToTable" FromRole="Meal" ToRole="DataOrder" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeOrder" Type="Time" Precision="7" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="NumOfMeal" Type="Int32" />
+          <Property Name="SumPrice" Type="Single" />
+          <Property Name="IdOrderHall" Type="Int32" />
+          <Property Name="NumCard" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ExperationDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cvv" Type="Int32" />
+          <NavigationProperty Name="DataOrders" Relationship="DbYaelReichenbergModel.FK_DataOrder_ToTable_1" FromRole="Order" ToRole="DataOrder" />
+          <NavigationProperty Name="USER" Relationship="DbYaelReichenbergModel.FK_Order_ToTable" FromRole="Order" ToRole="USER" />
+          <NavigationProperty Name="OrderHall" Relationship="DbYaelReichenbergModel.FK_Order_ToTable_1" FromRole="Order" ToRole="OrderHall" />
+        </EntityType>
+        <EntityType Name="OrderHall">
+          <Key>
+            <PropertyRef Name="IdOrderHall" />
+          </Key>
+          <Property Name="IdOrderHall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="Complate" Type="Int32" />
+          <Property Name="IdHall" Type="Int32" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" Precision="0" />
+          <Property Name="NumCard" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Cvv" Type="Int32" />
+          <Property Name="ExperationDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hall" Relationship="DbYaelReichenbergModel.FK_OrderHall_ToTable_1" FromRole="OrderHall" ToRole="Hall" />
+          <NavigationProperty Name="Orders" Relationship="DbYaelReichenbergModel.FK_Order_ToTable_1" FromRole="OrderHall" ToRole="Order" />
+          <NavigationProperty Name="USER" Relationship="DbYaelReichenbergModel.FK_OrderHall_ToTable" FromRole="OrderHall" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tz" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="NumOfHouse" Type="Int32" />
+          <Property Name="CellPhone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserImag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="city" Relationship="DbYaelReichenbergModel.FK_USERS_ToTable" FromRole="USER" ToRole="city" />
+          <NavigationProperty Name="Orders" Relationship="DbYaelReichenbergModel.FK_Order_ToTable" FromRole="USER" ToRole="Order" />
+          <NavigationProperty Name="OrderHalls" Relationship="DbYaelReichenbergModel.FK_OrderHall_ToTable" FromRole="USER" ToRole="OrderHall" />
+        </EntityType>
+        <Association Name="FK_Meal_ToTable">
+          <End Type="DbYaelReichenbergModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DbYaelReichenbergModel.Meal" Role="Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Halls_ToTable">
+          <End Type="DbYaelReichenbergModel.city" Role="city" Multiplicity="1" />
+          <End Type="DbYaelReichenbergModel.Hall" Role="Hall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Hall">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_ToTable">
+          <End Type="DbYaelReichenbergModel.city" Role="city" Multiplicity="1" />
+          <End Type="DbYaelReichenbergModel.USER" Role="USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataOrder_ToTable">
+          <End Type="DbYaelReichenbergModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="DbYaelReichenbergModel.DataOrder" Role="DataOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="IdMeal" />
+            </Principal>
+            <Dependent Role="DataOrder">
+              <PropertyRef Name="IdMeal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataOrder_ToTable_1">
+          <End Type="DbYaelReichenbergModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="DbYaelReichenbergModel.DataOrder" Role="DataOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="DataOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderHall_ToTable_1">
+          <End Type="DbYaelReichenbergModel.Hall" Role="Hall" Multiplicity="1" />
+          <End Type="DbYaelReichenbergModel.OrderHall" Role="OrderHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hall">
+              <PropertyRef Name="IdHall" />
+            </Principal>
+            <Dependent Role="OrderHall">
+              <PropertyRef Name="IdHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToTable">
+          <End Type="DbYaelReichenbergModel.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="DbYaelReichenbergModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToTable_1">
+          <End Type="DbYaelReichenbergModel.OrderHall" Role="OrderHall" Multiplicity="0..1" />
+          <End Type="DbYaelReichenbergModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderHall">
+              <PropertyRef Name="IdOrderHall" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdOrderHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderHall_ToTable">
+          <End Type="DbYaelReichenbergModel.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="DbYaelReichenbergModel.OrderHall" Role="OrderHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderHall">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbYaelReichenbergModelStoreContainer" CdmEntityContainer="DbYaelReichenbergEntities4">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.city">
+              <MappingFragment StoreEntitySet="cities">
+                <ScalarProperty Name="NameCity" ColumnName="NameCity" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataOrders">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.DataOrder">
+              <MappingFragment StoreEntitySet="DataOrder">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IdMeal" ColumnName="IdMeal" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Halls">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.Hall">
+              <MappingFragment StoreEntitySet="Halls">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdHall" ColumnName="IdHall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meals">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="CountMeal" ColumnName="CountMeal" />
+                <ScalarProperty Name="Described" ColumnName="Described" />
+                <ScalarProperty Name="NameMeal" ColumnName="NameMeal" />
+                <ScalarProperty Name="IdMeal" ColumnName="IdMeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Cvv" ColumnName="Cvv" />
+                <ScalarProperty Name="ExperationDate" ColumnName="ExperationDate" />
+                <ScalarProperty Name="NumCard" ColumnName="NumCard" />
+                <ScalarProperty Name="IdOrderHall" ColumnName="IdOrderHall" />
+                <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+                <ScalarProperty Name="NumOfMeal" ColumnName="NumOfMeal" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="TimeOrder" ColumnName="TimeOrder" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderHalls">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.OrderHall">
+              <MappingFragment StoreEntitySet="OrderHall">
+                <ScalarProperty Name="ExperationDate" ColumnName="ExperationDate" />
+                <ScalarProperty Name="Cvv" ColumnName="Cvv" />
+                <ScalarProperty Name="NumCard" ColumnName="NumCard" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="IdHall" ColumnName="IdHall" />
+                <ScalarProperty Name="Complate" ColumnName="Complate" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdOrderHall" ColumnName="IdOrderHall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="DbYaelReichenbergModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UserImag" ColumnName="UserImag" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="NumOfHouse" ColumnName="NumOfHouse" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Tz" ColumnName="Tz" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
